@@ -64,11 +64,18 @@ h6 {
   --color-score-text: hsl(229, 64%, 46%);
   --color-header-outline: hsl(217, 16%, 45%);
 
-  --color-radial-gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+  --color-radial-gradient-start: hsl(214, 47%, 23%);
+  --color-radial-gradient-end: hsl(237, 49%, 15%);
 }
 
 body {
   font-family: 'Barlow Semi Condensed', sans-serif;
   font-weight: 600;
   font-style: normal;
+  background: radial-gradient(
+    circle at center top in hsl,
+    var(--color-radial-gradient-start),
+    var(--color-radial-gradient-end)
+  );
+  block-size: 100dvh;
 }
