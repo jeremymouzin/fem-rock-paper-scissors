@@ -69,6 +69,16 @@ I had to adjust the logo position and paddings in the header because they're not
 
 Also I had to add a `h1` tag for best practices so I decided to put one that is invisible (because nothing on the design seems relevant to be a title). I didn't add `aria-hidden` attribute so that ARIA technologies can use this information. I'm not an expert on accessibility, I'm still learning so feel free to correct me if I'm wrong.
 
+## Step 3: The buttons group
+
+I started by adding the pentagon SVG image on the background of the div that will contain all buttons by using the `background-image` property. I centered everything according to the design using a combination of `margin-inline: auto` and `padding-block-start`. Nothing difficult here.
+
+But then I looked further to the design and started wondering how the hell I'm gonna do these colored circles around each possible choice... with the shadows etc. and by the way they're NOT circles it would have been too easy right 🤣!
+
+That's going to be a little challenge for me...
+
+## Step 4: The GODAMN (NOT) CIRCLES buttons
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)

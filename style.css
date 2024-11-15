@@ -120,3 +120,13 @@ header > img {
   letter-spacing: -0.5px;
   color: var(--color-dark-text);
 }
+
+.buttons-group {
+  max-inline-size: 475px;
+  block-size: 465px;
+  margin-inline: auto;
+  background-image: url(images/bg-pentagon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-block-start: 46px;
+}
