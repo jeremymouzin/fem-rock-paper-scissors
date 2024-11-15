@@ -79,3 +79,44 @@ body {
   );
   block-size: 100dvh;
 }
+
+.invisible {
+  display: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid var(--color-header-outline);
+    max-inline-size: 704px;
+    margin-inline: auto;
+    margin-block-start: 46px;
+    padding: 1.7rem 2.3rem 1.6rem 2.9rem;
+    border-radius: 16px;
+}
+
+header > img {
+  position: relative;
+  top: 4px;
+}
+
+.score-card {
+  background-color: white;
+  min-inline-size: 150px;
+  border-radius: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  padding-block-start: 1.2rem;
+  font-size: 1.8rem;
+  letter-spacing: 1.4px;
+  color:  var(--color-score-text);
+}
+
+#score {
+  display: block;
+  font-size: 6.5rem;
+  line-height: .9;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--color-dark-text);
+}
