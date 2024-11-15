@@ -53,4 +53,22 @@ h6 {
 /* Variables */
 
 :root {
+  /* Colors */
+  --color-scissors-gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  --color-paper-gradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  --color-rock-gradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  --color-lizard-gradient: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  --color-spock-gradient: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+
+  --color-dark-text: hsl(229, 25%, 31%);
+  --color-score-text: hsl(229, 64%, 46%);
+  --color-header-outline: hsl(217, 16%, 45%);
+
+  --color-radial-gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+}
+
+body {
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
