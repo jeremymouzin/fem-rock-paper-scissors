@@ -81,6 +81,8 @@ I manually adjusted all icons to fit the design perfectly. I did this using Goog
 
 ### Step 5: The rule button
 
+No difficulty here to make and place the button.
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
