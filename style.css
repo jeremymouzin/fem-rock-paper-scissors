@@ -54,11 +54,11 @@ h6 {
 
 :root {
   /* Colors */
-  --color-scissors-gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-  --color-paper-gradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
-  --color-rock-gradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
-  --color-lizard-gradient: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
-  --color-spock-gradient: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+  --color-scissors-gradient: linear-gradient(hsl(40, 84%, 53%), hsl(39, 89%, 49%));
+  --color-paper-gradient: linear-gradient(hsl(230, 89%, 65%), hsl(230, 89%, 62%));
+  --color-rock-gradient: linear-gradient(hsl(349, 70%, 56%), hsl(349, 71%, 52%));
+  --color-lizard-gradient: linear-gradient(hsl(261, 72%, 63%), hsl(261, 73%, 60%));
+  --color-spock-gradient: linear-gradient(hsl(189, 58%, 57%), hsl(189, 59%, 53%));
 
   --color-dark-text: hsl(229, 25%, 31%);
   --color-score-text: hsl(229, 64%, 46%);
@@ -85,14 +85,14 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    border: 3px solid var(--color-header-outline);
-    max-inline-size: 704px;
-    margin-inline: auto;
-    margin-block-start: 46px;
-    padding: 1.7rem 2.3rem 1.6rem 2.9rem;
-    border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid var(--color-header-outline);
+  max-inline-size: 704px;
+  margin-inline: auto;
+  margin-block-start: 46px;
+  padding: 1.7rem 2.3rem 1.6rem 2.9rem;
+  border-radius: 16px;
 }
 
 header > img {
@@ -109,13 +109,13 @@ header > img {
   padding-block-start: 1.2rem;
   font-size: 1.8rem;
   letter-spacing: 1.4px;
-  color:  var(--color-score-text);
+  color: var(--color-score-text);
 }
 
 #score {
   display: block;
   font-size: 6.5rem;
-  line-height: .9;
+  line-height: 0.9;
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--color-dark-text);
@@ -129,4 +129,66 @@ header > img {
   background-repeat: no-repeat;
   background-position: center;
   margin-block-start: 46px;
+  position: relative;
+}
+
+.buttons-group button {
+  --circle-size: 145px;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  block-size: calc(var(--circle-size) + 3px);
+  inline-size: var(--circle-size);
+  box-shadow: inset 0 -6px rgba(0,0,0,.2);
+}
+
+.buttons-group button::before {
+  --thickness: 16px;
+  content: '';
+  position: absolute;
+  inset-inline-start: var(--thickness);
+  inset-block-start: var(--thickness);
+  block-size: calc(var(--circle-size) - 2 * var(--thickness));
+  inline-size: calc(var(--circle-size) - 2 * var(--thickness));
+  border-radius: 50%;
+  box-shadow: inset 0 6px rgba(0, 0, 0, 0.15);
+  background: var(--background-image), linear-gradient(#dadada, #fcf4e9);
+  background-position: var(--background-image-position), center;
+  background-repeat: no-repeat;
+}
+
+#scissors {
+  --background-image: url(images/icon-scissors.svg);
+  --background-image-position: 28px 30px;
+  transform: translate(114%);
+  background: var(--color-scissors-gradient);
+}
+
+#spock {
+  --background-image: url(images/icon-spock.svg);
+  --background-image-position: 38px 28px;
+  transform: translateY(88%);
+  background: var(--color-spock-gradient);
+}
+
+#paper {
+  --background-image: url(images/icon-paper.svg);
+  --background-image-position: 30px 30px;
+  transform: translate(227%, 88%);
+  background: var(--color-paper-gradient);
+}
+
+#lizard {
+  --background-image: url(images/icon-lizard.svg);
+  --background-image-position: 25px 30px;
+  transform: translate(46%, 213%);
+  background: var(--color-lizard-gradient);
+}
+
+#rock {
+  --background-image: url(images/icon-rock.svg);
+  --background-image-position: 33px 37px;
+  transform: translate(182%, 213%);
+  background: var(--color-rock-gradient);
 }

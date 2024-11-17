@@ -65,11 +65,21 @@ Also I had to add a `h1` tag for best practices so I decided to put one that is 
 
 I started by adding the pentagon SVG image on the background of the div that will contain all buttons by using the `background-image` property. I centered everything according to the design using a combination of `margin-inline: auto` and `padding-block-start`. Nothing difficult here.
 
-But then I looked further to the design and started wondering how the hell I'm gonna do these colored circles around each possible choice... with the shadows etc. and by the way they're NOT circles it would have been too easy right 🤣!
+But then I looked further to the design and started wondering how the hell I'm gonna do these colored circles around each possible choice... with the shadows etc.
 
 That's going to be a little challenge for me...
 
-### Step 4: The GODAMN (NOT) CIRCLES buttons
+### Step 4: The GODAMN buttons
+
+OK I spent waaaayy too much time on this, I'm sure having the Figma file would have helped the process a lot. Anyway, after playing with stacking `background` properties, trying to use `radial-gradient`and stuff I just used a simple `box-shadow` (with `inset`) and a `::before` pseudo-element to make it happen.
+
+> Don't be fooled sometimes the easiest ways of doing things take a lot of time to figure out!
+
+I heavily used CSS variables to make the thing more robust to change: for example, if you want to change the thickness of the colored border of the buttons for example, you just have to change one value `--thickness`.
+
+I manually adjusted all icons to fit the design perfectly. I did this using Google Chrome Sources tab with workspaces folders feature which speeds up the process a lot by saving immediately to the file all your changes in the Chrome editor. I did tweet about this trick recently: [Tweet with video](https://x.com/JeremyMouzin/status/1857407654181707779).
+
+### Step 5: The rule button
 
 ## Author
 
