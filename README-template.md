@@ -83,6 +83,10 @@ I manually adjusted all icons to fit the design perfectly. I did this using Goog
 
 No difficulty here to make and place the button.
 
+### Step 6: The rules modal dialog
+
+I used the `dialog` awesomeness (with `::backdrop` pseudo-element!) to build the rules modal easily. I will check accessibility at the very end when all designs (mobile and desktop) will be integrated. I decided to use a flexbox container on the desktop version because I will need it for the mobile version too (I always check mobile and desktop designs to pick up the right structure for both).
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)

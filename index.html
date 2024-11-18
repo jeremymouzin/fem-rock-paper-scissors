@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <main>
@@ -35,7 +36,20 @@
         <button id="rock"></button>
       </div>
 
-      <button id="rules">Rules</button>
+      <button id="rules-button">Rules</button>
+
+      <dialog class="rules">
+        <div class="container">
+          <h2>Rules</h2>
+          <img
+            src="images/image-rules-bonus.svg"
+            alt="Graph showing game's rules. Scissors beats paper and lizard. Paper beats rock and spock. Rock beats lizard and scissors. Lizard beats spock and paper. Spock beats scissors and rock. "
+          />
+          <form method="dialog">
+            <button type="submit"></button>
+          </form>
+        </div>
+      </dialog>
     </main>
   </body>
 </html>

@@ -82,6 +82,7 @@ body {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 .invisible {
@@ -196,7 +197,7 @@ header > img {
   background: var(--color-rock-gradient);
 }
 
-#rules {
+#rules-button {
   position: absolute;
   inset-inline-end: 3.1rem;
   inset-block-end: 3.1rem;
@@ -207,4 +208,48 @@ header > img {
   border: 2px solid var(--color-header-outline);
   border-radius: 8px;
   letter-spacing: 2px;
+}
+
+dialog.rules {
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  block-size: 461px;
+  inline-size: 400px;
+  border: none;
+  border-radius: 10px;
+  padding: 2.6rem 3.2rem;
+}
+
+dialog.rules .container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+dialog.rules::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog.rules h2 {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  color: var(--color-dark-text);
+}
+
+dialog.rules img {
+  --pixel-perfect-size: 101%;
+  inline-size: var(--pixel-perfect-size);
+  max-inline-size: var(--pixel-perfect-size);
+}
+
+dialog.rules button[type='submit'] {
+  background-image: url(images/icon-close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  position: absolute;
+  inset-inline-end: 2.6rem;
+  inset-block-start: 3.3rem;
+  block-size: 3rem;
+  inline-size: 3rem;
 }
