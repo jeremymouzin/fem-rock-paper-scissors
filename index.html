@@ -29,11 +29,18 @@
       </header>
 
       <div class="buttons-group">
-        <button id="scissors"></button>
-        <button id="spock"></button>
-        <button id="paper"></button>
-        <button id="lizard"></button>
-        <button id="rock"></button>
+        <button class="choice scissors" data-choice="scissors"></button>
+        <button class="choice spock" data-choice="spock"></button>
+        <button class="choice paper" data-choice="paper"></button>
+        <button class="choice lizard" data-choice="lizard"></button>
+        <button class="choice rock" data-choice="rock"></button>
+      </div>
+
+      <div class="fight">
+        <p class="you-picked">You picked</p>
+        <div class="choice user-choice"></div>
+        <p class="house-picked">The house picked</p>
+        <div class="house-choice"></div>
       </div>
 
       <button id="rules-button">Rules</button>

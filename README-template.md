@@ -87,6 +87,20 @@ No difficulty here to make and place the button.
 
 I used the `dialog` awesomeness (with `::backdrop` pseudo-element!) to build the rules modal easily. I will check accessibility at the very end when all designs (mobile and desktop) will be integrated. I decided to use a flexbox container on the desktop version because I will need it for the mobile version too (I always check mobile and desktop designs to pick up the right structure for both).
 
+### Step 7: Clicking on a choice
+
+I had to do a lot of refactoring in the CSS to decouple properties from the buttons and to make classes that just generate the colored buttons and some others that put the correct image on it.
+
+Also I had to manage toggling content when clicking on a choice to make the hexagon of choices disappears while the fight screen appears.
+
+I didn't want the CSS to be tied to my JavaScript. For example, if the `div.fight` uses a `display: grid`, I don't want to have to write `fight.style.display = 'grid'` in my JavaScript to make it visible. Why?
+
+Because if I change my CSS later (using flexbox for example) I'll have to update my JavaScript code! The CSS would be tied to the JavaScript and I don't like that.
+
+That's why I pull dynamically each display types at the beginning of my script (thanks to `getComputedStyle`) and record them in a dictionary (`Map`). This way I can use later these values to make element appear / disappear properly. I built 2 little helper functions for that `makeAppear` and `makeDisappear`.
+
+Lastly, I used `data-*` attributes to pick the correct CSS class to apply when clicking on a button to make a choice. This way I don't rely on `class` attributes as they're related to styling elements, not storing data in any way.
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
