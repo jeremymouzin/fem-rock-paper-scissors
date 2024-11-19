@@ -80,6 +80,11 @@ body {
   block-size: 100dvh;
 }
 
+main {
+  overflow-x: clip;
+  padding-inline: 3rem;
+}
+
 button {
   cursor: pointer;
   border: none;
@@ -319,4 +324,63 @@ dialog.rules button[type='submit'] {
 
 .fight p.house-picked {
   grid-area: house-picked;
+}
+
+/* Showing fight result */
+
+.fight.results {
+  max-inline-size: 920px;
+  margin-inline: auto;
+  margin-block-start: 70px;
+  display: grid;
+  grid-template: 1fr 420px / 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  grid-template-areas:
+    'you-picked . house-picked'
+    'user-choice result house-choice';
+}
+
+.result {
+  display: block;
+  grid-area: result;
+}
+
+#result-label {
+  font-size: 5.6rem;
+  font-weight: 700;
+  letter-spacing: 0px;
+  margin-block-end: 1.2rem;
+}
+
+.play-again {
+  display: block;
+  text-transform: uppercase;
+  inline-size: 100%;
+  padding: 1.2rem;
+  color: var(--color-dark-text);
+  border-radius: 8px;
+  letter-spacing: 2.5px;
+}
+
+.winner::after {
+  --winner-radius: 108px;
+  --button-width: calc(var(--circle-size) / 2);
+  --shadow-full-width: calc(100% + 2 * var(--winner-radius));
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(50% - var(--shadow-full-width) / 2);
+  inset-block-start: calc(50% - var(--shadow-full-width) / 2);
+  block-size: var(--shadow-full-width);
+  inline-size: var(--shadow-full-width);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    transparent var(--button-width),
+    rgb(255 255 255 / 5%) var(--button-width),
+    rgb(255 255 255 / 8%) 40%,
+    rgb(255 255 255 / 3%) 40%,
+    rgb(255 255 255 / 6%) 55%,
+    rgb(255 255 255 / 2%) 55%
+  );
 }

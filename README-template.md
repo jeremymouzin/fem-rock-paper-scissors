@@ -105,6 +105,19 @@ Lastly, I used `data-*` attributes to pick the correct CSS class to apply when c
 
 I added some JavaScript so that the house can pick up a choice with a quick animation of serveral non consecutive choices it takes before keeping the last one. I'll polish all animations at the very end.
 
+### Step 9: Compute winner and loser
+
+I wrote a bit of JavaScript to compute the winner and added the circles shadows around the winner choice.
+I wanted my code to be easy to read so I took the time to write a specific function so that I can write this:
+
+```js
+...
+ if (choice(userValue).beats(houseValue)) {
+  resultLabelValue = 'you win'
+ }
+...
+```
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
