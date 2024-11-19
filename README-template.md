@@ -118,6 +118,10 @@ I wanted my code to be easy to read so I took the time to write a specific funct
 ...
 ```
 
+### Step 10: Update score and save it across sessions
+
+JavaScript and localStorage to the rescue!
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)

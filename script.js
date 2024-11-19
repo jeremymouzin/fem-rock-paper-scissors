@@ -84,6 +84,10 @@ document.querySelectorAll('.buttons-group button').forEach((button) => {
 })
 
 /* Show results of the fight */
+const scoreSpan = document.querySelector('#score')
+const SCORE_KEY = 'score'
+let score = localStorage.getItem(SCORE_KEY) || 0
+scoreSpan.textContent = score
 const resultLabel = document.querySelector('#result-label')
 
 function choice(userValue) {
@@ -109,12 +113,16 @@ function showResults(userValue, houseValue) {
   } else if (choice(userValue).beats(houseValue)) {
     resultLabelValue = 'you win'
     userChoice.classList.add('winner')
+    score++
   } else {
     resultLabelValue = 'you lose'
     houseChoice.classList.add('winner')
+    score--
   }
 
   resultLabel.textContent = resultLabelValue
+  scoreSpan.textContent = score
+  localStorage.setItem(SCORE_KEY, score)
 
   // Show result UI
   fight.classList.add('results')
