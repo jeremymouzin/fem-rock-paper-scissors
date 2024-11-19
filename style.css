@@ -271,26 +271,6 @@ dialog.rules button[type='submit'] {
   inline-size: 3rem;
 }
 
-.fight .user-choice {
-  position: relative;
-  transform: scale(2);
-}
-
-.fight .house-choice {
-  --size: 225px;
-  block-size: var(--size);
-  inline-size: var(--size);
-  background-color: rgba(0,0,0,.1);
-  border-radius: 50%;
-}
-
-.fight .house-choice.choice {
-  position: relative;
-  block-size: calc(var(--circle-size) + 3px);
-  inline-size: var(--circle-size);
-  transform: scale(2);
-}
-
 .fight {
   max-inline-size: 760px;
   margin-inline: auto;
@@ -300,8 +280,30 @@ dialog.rules button[type='submit'] {
   justify-items: center;
   align-items: center;
   grid-template-areas:
-    "you-picked house-picked"
-    "user-choice house-choice";
+    'you-picked house-picked'
+    'user-choice house-choice';
+}
+
+.fight .user-choice {
+  position: relative;
+  transform: scale(2);
+  grid-area: user-choice;
+}
+
+.fight .house-choice {
+  --size: 225px;
+  block-size: var(--size);
+  inline-size: var(--size);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  grid-area: house-choice;
+}
+
+.fight .house-choice.choice {
+  position: relative;
+  block-size: calc(var(--circle-size) + 3px);
+  inline-size: var(--circle-size);
+  transform: scale(2);
 }
 
 .fight p {
@@ -317,13 +319,4 @@ dialog.rules button[type='submit'] {
 
 .fight p.house-picked {
   grid-area: house-picked;
-}
-
-.fight .user-choice {
-  grid-area: user-choice;
-}
-
-.fight .house-choice {
-  grid-area: house-choice;
-  --size: );
 }
