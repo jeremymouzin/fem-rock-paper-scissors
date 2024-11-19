@@ -284,6 +284,13 @@ dialog.rules button[type='submit'] {
   border-radius: 50%;
 }
 
+.fight .house-choice.choice {
+  position: relative;
+  block-size: calc(var(--circle-size) + 3px);
+  inline-size: var(--circle-size);
+  transform: scale(2);
+}
+
 .fight {
   max-inline-size: 760px;
   margin-inline: auto;
@@ -318,4 +325,5 @@ dialog.rules button[type='submit'] {
 
 .fight .house-choice {
   grid-area: house-choice;
+  --size: );
 }

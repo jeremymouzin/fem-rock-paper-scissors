@@ -101,6 +101,10 @@ That's why I pull dynamically each display types at the beginning of my script (
 
 Lastly, I used `data-*` attributes to pick the correct CSS class to apply when clicking on a button to make a choice. This way I don't rely on `class` attributes as they're related to styling elements, not storing data in any way.
 
+### Step 8: Make the house pick a choice
+
+I added some JavaScript so that the house can pick up a choice with a quick animation of serveral non consecutive choices it takes before keeping the last one. I'll polish all animations at the very end.
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
