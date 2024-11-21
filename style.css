@@ -449,7 +449,7 @@ dialog.rules button[type='submit'] {
 
   .fight {
     margin-block-start: 80px;
-    grid-template: 170px 1fr / 1fr 1fr;
+    grid-template: 170px 2.6rem / 1fr 1fr;
     grid-template-areas:
       'user-choice house-choice'
       'you-picked house-picked';
