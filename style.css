@@ -418,7 +418,6 @@ dialog.rules button[type='submit'] {
     transform: scale(0.65);
   }
 
-  
   .choice {
     --circle-size: 135px;
     block-size: calc(var(--circle-size) + 3px);
@@ -458,7 +457,7 @@ dialog.rules button[type='submit'] {
       'user-choice house-choice'
       'you-picked house-picked';
   }
-  
+
   .fight .user-choice,
   .fight .house-choice.choice {
     transform: unset;
@@ -467,9 +466,48 @@ dialog.rules button[type='submit'] {
   .fight .house-choice {
     --size: 125px;
   }
-  
+
   .fight p {
     font-size: 1.6rem;
     letter-spacing: 2px;
+  }
+
+  dialog.rules {
+    inset: 0;
+    transform: unset;
+    border-radius: 0;
+    max-width: none;
+    max-height: none;
+    block-size: 100%;
+    inline-size: 100%;
+    margin-block: 0;
+    padding-inline: 3.2rem;
+    padding-block: 0;
+  }
+
+  dialog.rules .container {
+    justify-content: center;
+    align-items: center;
+    block-size: 100vh;
+    gap: unset;
+  }
+
+  dialog.rules .container > h2,
+  dialog.rules .container > form {
+    flex-grow: 1;
+    flex-basis: 50%;
+  }
+
+  dialog.rules h2 {
+    text-align: center;
+    position: relative;
+    inset-block-start: 9rem;
+  }
+
+  dialog.rules button[type='submit'] {
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    inset-block-start: unset;
+    inset-block-end: 6rem;
   }
 }
