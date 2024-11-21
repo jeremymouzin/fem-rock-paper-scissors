@@ -344,6 +344,7 @@ dialog.rules button[type='submit'] {
 .result {
   display: block;
   grid-area: result;
+  margin-block: 6rem;
 }
 
 #result-label {
@@ -509,5 +510,26 @@ dialog.rules button[type='submit'] {
     transform: translateX(-50%);
     inset-block-start: unset;
     inset-block-end: 6rem;
+  }
+
+  .fight.results {
+    max-inline-size: 100%;
+    margin-block-start: 80px;
+    grid-template: 170px 2.6rem 1fr / 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    grid-template-areas:
+      'user-choice house-choice'
+      'you-picked house-picked'
+      'result result';
+  }
+
+  #result-label {
+    margin-block-end: 0.4rem;
+    text-align: center;
+  }
+
+  .play-again {
+    inline-size: 22rem;
   }
 }

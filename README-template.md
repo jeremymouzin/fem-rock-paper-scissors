@@ -122,6 +122,10 @@ I wanted my code to be easy to read so I took the time to write a specific funct
 
 JavaScript and localStorage to the rescue!
 
+### Step 11: Responsive design
+
+Making the responsive design was not so difficult as I used the correct layout from the start based on my analysis of desktop and mobile designs versions. I used the `transform: scale()` function to scale down the size of the pentagon with buttons and it works nicely.
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
