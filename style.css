@@ -148,6 +148,7 @@ header > img {
 
 .choice {
   --circle-size: 145px;
+  --scale-buttons: 1;
   border-radius: 50%;
   block-size: calc(var(--circle-size) + 3px);
   inline-size: var(--circle-size);
@@ -176,7 +177,8 @@ header > img {
 }
 
 button.scissors {
-  transform: translate(114%);
+  inset-inline-start: 34%;
+  transform: scale(var(--scale-buttons));
 }
 
 .spock {
@@ -185,7 +187,7 @@ button.scissors {
 }
 
 button.spock {
-  transform: translateY(88%);
+  inset-block-start: 28%;
 }
 
 .paper {
@@ -194,7 +196,8 @@ button.spock {
 }
 
 button.paper {
-  transform: translate(227%, 88%);
+  inset-inline-end: 0;
+  inset-block-start: 28%;
 }
 
 .lizard {
@@ -203,7 +206,8 @@ button.paper {
 }
 
 button.lizard {
-  transform: translate(46%, 213%);
+  inset-inline-start: 14%;
+  inset-block-end: 0;
 }
 
 .rock {
@@ -212,7 +216,8 @@ button.lizard {
 }
 
 button.rock {
-  transform: translate(182%, 213%);
+  inset-inline-end: 14%;
+  inset-block-end: 0;
 }
 
 #rules-button {
@@ -410,35 +415,44 @@ dialog.rules button[type='submit'] {
   }
 
   .buttons-group {
-    margin-block-start: 23px;
-    max-inline-size: 290px;
-    transform: scale(0.7);
+    margin-block-start: 140px;
+    max-inline-size: 200px;
+    block-size: auto;
+    aspect-ratio: 1;
+    background-size: 100%;
+  }
+    
+  button.scissors {
+    inset-inline-start: 17%;
+    inset-block-start: -33%;
+  }
+  
+  button.spock {
+    inset-inline-start: -37%;
+    inset-block-start: 8%;
+  }
+  
+  button.paper {
+    inset-inline-end: -37%;
+    inset-block-start: 9%;
+  }
+  
+  button.lizard {
+    inset-inline-start: -16%;
+    inset-block-end: -39%;
+  }
+  
+  button.rock {
+    inset-inline-end: -16%;
+    inset-block-end: -40%;
   }
 
   .choice {
     --circle-size: 135px;
     block-size: calc(var(--circle-size) + 3px);
     inline-size: var(--circle-size);
-  }
-
-  button.scissors {
-    transform: translate(59%);
-  }
-
-  button.spock {
-    transform: translate(-56%, 88%);
-  }
-
-  button.paper {
-    transform: translate(173%, 88%);
-  }
-
-  button.lizard {
-    transform: translate(-10%, 216%);
-  }
-
-  button.rock {
-    transform: translate(127%, 216%);
+    --scale-buttons: .7;
+    transform: scale(var(--scale-buttons));
   }
 
   #rules-button {
@@ -535,6 +549,6 @@ dialog.rules button[type='submit'] {
 @media screen and (max-width: 360px) {
   .fight .user-choice,
   .fight .house-choice.choice {
-    --scale-buttons: .8;
+    --scale-buttons: 0.8;
   }
 }
