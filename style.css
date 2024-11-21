@@ -461,7 +461,8 @@ dialog.rules button[type='submit'] {
 
   .fight .user-choice,
   .fight .house-choice.choice {
-    transform: unset;
+    --scale-buttons: 1;
+    transform: scale(var(--scale-buttons));
   }
 
   .fight .house-choice {
@@ -471,6 +472,7 @@ dialog.rules button[type='submit'] {
   .fight p {
     font-size: 1.6rem;
     letter-spacing: 2px;
+    text-align: center;
   }
 
   dialog.rules {
@@ -531,5 +533,12 @@ dialog.rules button[type='submit'] {
 
   .play-again {
     inline-size: 22rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .fight .user-choice,
+  .fight .house-choice.choice {
+    --scale-buttons: .8;
   }
 }
