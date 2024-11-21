@@ -167,11 +167,11 @@ header > img {
   background: var(--background-image), linear-gradient(#dadada, #fcf4e9);
   background-position: var(--background-image-position), center;
   background-repeat: no-repeat;
+  --background-image-position: center;
 }
 
 .scissors {
   --background-image: url(images/icon-scissors.svg);
-  --background-image-position: 28px 30px;
   background: var(--color-scissors-gradient);
 }
 
@@ -181,7 +181,6 @@ button.scissors {
 
 .spock {
   --background-image: url(images/icon-spock.svg);
-  --background-image-position: 38px 28px;
   background: var(--color-spock-gradient);
 }
 
@@ -191,7 +190,6 @@ button.spock {
 
 .paper {
   --background-image: url(images/icon-paper.svg);
-  --background-image-position: 30px 30px;
   background: var(--color-paper-gradient);
 }
 
@@ -201,7 +199,6 @@ button.paper {
 
 .lizard {
   --background-image: url(images/icon-lizard.svg);
-  --background-image-position: 25px 30px;
   background: var(--color-lizard-gradient);
 }
 
@@ -211,7 +208,6 @@ button.lizard {
 
 .rock {
   --background-image: url(images/icon-rock.svg);
-  --background-image-position: 33px 37px;
   background: var(--color-rock-gradient);
 }
 
@@ -414,9 +410,9 @@ dialog.rules button[type='submit'] {
   }
 
   .buttons-group {
-    margin-block-start: 12px;
-    max-inline-size: 100%;
-    transform: scale(0.65);
+    margin-block-start: 23px;
+    max-inline-size: 290px;
+    transform: scale(0.7);
   }
 
   .choice {
