@@ -31,6 +31,7 @@ const TIME_BETWEEN_EACH_CHOICE_ITERATION = 100
 const userChoice = document.querySelector('.user-choice')
 const houseChoice = document.querySelector('.house-choice')
 const playAgain = document.querySelector('.play-again')
+const firstChoiceButton = document.querySelector('.choice.scissors')
 let userChoiceValue
 let houseChoiceValue
 let lastPickedHouseChoice
@@ -64,6 +65,9 @@ playAgain.addEventListener('click', () => {
   makeDisappear('result')
   makeDisappear('fight')
   makeAppear('buttons-group')
+
+  // Accessiblity improvement
+  firstChoiceButton.focus()
 })
 
 document.querySelectorAll('.buttons-group button').forEach((button) => {
@@ -127,6 +131,9 @@ function showResults(userValue, houseValue) {
   // Show result UI
   fight.classList.add('results')
   makeAppear('result')
+
+  // Accessibility improvement
+  playAgain.focus()
 }
 
 /* Rules dialog */

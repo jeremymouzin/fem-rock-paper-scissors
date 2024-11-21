@@ -128,6 +128,18 @@ Making the responsive design was quite difficult even if I used the correct layo
 
 So instead of scaling down the whole pentagon I just scaled down buttons using a CSS variable `--scale-buttons` and it worked like a charm. I had to refactor a lot of CSS I did to avoid duplicating stuff. Refactoring CSS is the best part because it helps you write less CSS in the end for the same result which is very satisfaying!
 
+### Step 12: Accessibility
+
+I run Lighthouse on Chrome to get some clues about what could be improved, thanks to this tool, I did some improvements:
+
+- I added ARIA labels for buttons (paper, scissors etc.)
+- I reorder the buttons so that when you select them with the keyboard, it turns in a clock-wise order which is more playful
+- I used a bit of JavaScript to ease playing again and avoid useless typing:
+  - When displaying results after a fight, the play again button is immediately focused, you just have to type ENTER and boom you can play again (otherwise you have to type on TAB and then ENTER)
+  - When getting back to buttons choices the first button at the top is immediately focus (selected) avoiding again the use of the TAB button and saving one more key stroke!
+
+I have a 100 accessibility score on Lighthouse.
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
