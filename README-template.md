@@ -124,7 +124,9 @@ JavaScript and localStorage to the rescue!
 
 ### Step 11: Responsive design
 
-Making the responsive design was not so difficult as I used the correct layout from the start based on my analysis of desktop and mobile designs versions. I used the `transform: scale()` function to scale down the size of the pentagon with buttons and it works nicely.
+Making the responsive design was quite difficult even if I used the correct layout from the start based on my analysis of desktop and mobile designs versions. I tried to use the `transform: scale()` function to scale down the size of the pentagon with buttons but it created shifting issues when using 320px small wide screens!
+
+So instead of scaling down the whole pentagon I just scaled down buttons using a CSS variable `--scale-buttons` and it worked like a charm. I had to refactor a lot of CSS I did to avoid duplicating stuff. Refactoring CSS is the best part because it helps you write less CSS in the end for the same result which is very satisfaying!
 
 ## Author
 
