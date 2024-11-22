@@ -261,7 +261,7 @@ dialog.rules h2 {
 dialog.rules img {
   --pixel-perfect-size: 101%;
   inline-size: var(--pixel-perfect-size);
-  max-inline-size: var(--pixel-perfect-size);
+  max-inline-size: 50dvh;
 }
 
 dialog.rules button[type='submit'] {
