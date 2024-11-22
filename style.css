@@ -252,6 +252,12 @@ button.rock {
   letter-spacing: 2px;
 }
 
+#rules-button:hover,
+#rules-button:focus-visible {
+  box-shadow: 0px 0px 16px 0px white;
+  outline: none;
+}
+
 dialog.rules {
   inset: 50%;
   transform: translate(-50%, -50%);
@@ -480,8 +486,9 @@ dialog.rules button[type='submit'] {
     transform: scale(var(--scale-buttons));
   }
 
-  .choice:hover, .choice:focus-visible {
-    transform: scale(calc(var(--scale-buttons) + .1));
+  .choice:hover,
+  .choice:focus-visible {
+    transform: scale(calc(var(--scale-buttons) + 0.1));
   }
 
   #rules-button {

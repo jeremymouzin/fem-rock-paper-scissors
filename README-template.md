@@ -153,6 +153,7 @@ I used the responsive tool in Google Chrome to stretch width and height of scree
 The last part should be fun and should provoke a WOW effect on the user of the game. To do this I added :
 
 - Some dotted colored outline on `:hover` and `:focus-visible` so that people navigating with keyboard can enjoy it too. I used `currentColor` property to make the color of the outline the same as the button.
+- Some nice box-shadow on the rules button when hover or focus-visible (I removed the default ouline of the browser)
 
 ## Author
 
