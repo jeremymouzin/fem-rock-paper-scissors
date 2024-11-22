@@ -140,6 +140,14 @@ I run Lighthouse on Chrome to get some clues about what could be improved, thank
 
 I have a 100 accessibility score on Lighthouse.
 
+### Step 13: Fixing bugs related to exotic screen sizes
+
+I used the responsive tool in Google Chrome to stretch width and height of screen in whatever shape they can take and discovered lots of bugs that I fixed:
+
+- Rules dialog image was stretching so much on some screen size (square size for example) that it covered title or close button
+- Rules button could move above other buttons on some screen sizes
+- Background was repeating itself on some big height screen sizes
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
