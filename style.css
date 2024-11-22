@@ -54,11 +54,16 @@ h6 {
 
 :root {
   /* Colors */
-  --color-scissors-gradient: linear-gradient(hsl(40, 84%, 53%), hsl(39, 89%, 49%));
-  --color-paper-gradient: linear-gradient(hsl(230, 89%, 65%), hsl(230, 89%, 62%));
-  --color-rock-gradient: linear-gradient(hsl(349, 70%, 56%), hsl(349, 71%, 52%));
-  --color-lizard-gradient: linear-gradient(hsl(261, 72%, 63%), hsl(261, 73%, 60%));
-  --color-spock-gradient: linear-gradient(hsl(189, 58%, 57%), hsl(189, 59%, 53%));
+  --color-scissors: hsl(39, 89%, 49%);
+  --color-scissors-gradient: linear-gradient(hsl(40, 84%, 53%), var(--color-scissors));
+  --color-paper: hsl(230, 89%, 62%);
+  --color-paper-gradient: linear-gradient(hsl(230, 89%, 65%), var(--color-paper));
+  --color-rock: hsl(349, 71%, 52%);
+  --color-rock-gradient: linear-gradient(hsl(349, 70%, 56%), var(--color-rock));
+  --color-lizard: hsl(261, 73%, 60%);
+  --color-lizard-gradient: linear-gradient(hsl(261, 72%, 63%), var(--color-lizard));
+  --color-spock: hsl(189, 59%, 53%);
+  --color-spock-gradient: linear-gradient(hsl(189, 58%, 57%), var(--color-spock));
 
   --color-dark-text: hsl(229, 25%, 31%);
   --color-score-text: hsl(229, 64%, 46%);
@@ -152,6 +157,16 @@ header > img {
   block-size: calc(var(--circle-size) + 3px);
   inline-size: var(--circle-size);
   box-shadow: inset 0 -6px rgba(0, 0, 0, 0.2);
+  transition: transform ease-in 50ms, outline ease-in 0.2s;
+}
+
+.choice:hover,
+.choice:focus-visible {
+  transform: scale(1.1);
+  outline-width: 6px;
+  outline-offset: 6px;
+  outline-style: dotted;
+  outline-color: currentColor;
 }
 
 .choice::before {
@@ -173,6 +188,7 @@ header > img {
 .scissors {
   --background-image: url(images/icon-scissors.svg);
   background: var(--color-scissors-gradient);
+  color: var(--color-scissors);
 }
 
 button.scissors {
@@ -183,6 +199,7 @@ button.scissors {
 .spock {
   --background-image: url(images/icon-spock.svg);
   background: var(--color-spock-gradient);
+  color: var(--color-spock);
 }
 
 button.spock {
@@ -192,6 +209,7 @@ button.spock {
 .paper {
   --background-image: url(images/icon-paper.svg);
   background: var(--color-paper-gradient);
+  color: var(--color-paper);
 }
 
 button.paper {
@@ -202,6 +220,7 @@ button.paper {
 .lizard {
   --background-image: url(images/icon-lizard.svg);
   background: var(--color-lizard-gradient);
+  color: var(--color-lizard);
 }
 
 button.lizard {
@@ -212,6 +231,7 @@ button.lizard {
 .rock {
   --background-image: url(images/icon-rock.svg);
   background: var(--color-rock-gradient);
+  color: var(--color-rock);
 }
 
 button.rock {
@@ -394,7 +414,7 @@ dialog.rules button[type='submit'] {
   main {
     padding: 3rem 3rem 6rem;
   }
-  
+
   header {
     border-radius: 6px;
     padding: 1rem 1.1rem;
@@ -426,27 +446,27 @@ dialog.rules button[type='submit'] {
     background-size: 100%;
     margin-block-end: 18.3rem;
   }
-    
+
   button.scissors {
     inset-inline-start: 17%;
     inset-block-start: -33%;
   }
-  
+
   button.spock {
     inset-inline-start: -37%;
     inset-block-start: 8%;
   }
-  
+
   button.paper {
     inset-inline-end: -37%;
     inset-block-start: 9%;
   }
-  
+
   button.lizard {
     inset-inline-start: -16%;
     inset-block-end: -39%;
   }
-  
+
   button.rock {
     inset-inline-end: -16%;
     inset-block-end: -40%;
@@ -456,8 +476,12 @@ dialog.rules button[type='submit'] {
     --circle-size: 135px;
     block-size: calc(var(--circle-size) + 3px);
     inline-size: var(--circle-size);
-    --scale-buttons: .7;
+    --scale-buttons: 0.7;
     transform: scale(var(--scale-buttons));
+  }
+
+  .choice:hover, .choice:focus-visible {
+    transform: scale(calc(var(--scale-buttons) + .1));
   }
 
   #rules-button {

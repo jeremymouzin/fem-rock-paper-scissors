@@ -148,6 +148,12 @@ I used the responsive tool in Google Chrome to stretch width and height of scree
 - Rules button could move above other buttons on some screen sizes
 - Background was repeating itself on some big height screen sizes
 
+### Step 14: Adding polish and some WOW effect on the project
+
+The last part should be fun and should provoke a WOW effect on the user of the game. To do this I added :
+
+- Some dotted colored outline on `:hover` and `:focus-visible` so that people navigating with keyboard can enjoy it too. I used `currentColor` property to make the color of the outline the same as the button.
+
 ## Author
 
 - My JavaScript Course website - [JavaScript de Zéro](https://www.javascriptdezero.com)
