@@ -302,6 +302,13 @@ dialog.rules button[type='submit'] {
   inline-size: 3rem;
 }
 
+dialog.rules button[type='submit']:focus-visible {
+  outline-width: 6px;
+  outline-offset: 6px;
+  outline-color: var(--color-rock);
+  border-radius: 50%;
+}
+
 .fight {
   max-inline-size: 760px;
   margin-inline: auto;
