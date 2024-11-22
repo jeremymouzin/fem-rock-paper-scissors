@@ -83,6 +83,7 @@ body {
 main {
   overflow-x: clip;
   padding-inline: 3rem;
+  padding-block-end: 6rem;
 }
 
 button {
@@ -456,9 +457,10 @@ dialog.rules button[type='submit'] {
   }
 
   #rules-button {
-    inset-block-end: 5.5rem;
-    inset-inline-end: 50%;
-    transform: translate(50%);
+    display: block;
+    margin-inline: auto;
+    position: static;
+    margin-block-start: 18.2rem;
   }
 
   .fight {
