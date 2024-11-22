@@ -20,6 +20,14 @@ function makeAppear(className) {
   const element = document.querySelector(`.${className}`)
   if (element) element.style.display = originalDisplayValues.get(className) || 'block'
 }
+function makeInvisible(className) {
+  const element = document.querySelector(`.${className}`)
+  if (element) element.style.opacity = 0
+}
+function makeVisible(className) {
+  const element = document.querySelector(`.${className}`)
+  if (element) element.style.opacity = 1
+}
 
 /* Elements that are hidden at start */
 makeDisappear('fight')
@@ -73,7 +81,10 @@ playAgain.addEventListener('click', () => {
 document.querySelectorAll('.buttons-group button').forEach((button) => {
   button.addEventListener('click', (e) => {
     makeDisappear('buttons-group')
+    fight.classList.add('results')
     makeAppear('fight')
+    makeInvisible('result')
+    makeAppear('result')
     userChoiceValue = e.currentTarget.dataset.choice
     userChoice.classList.add(userChoiceValue)
 
@@ -129,8 +140,7 @@ function showResults(userValue, houseValue) {
   localStorage.setItem(SCORE_KEY, score)
 
   // Show result UI
-  fight.classList.add('results')
-  makeAppear('result')
+  makeVisible('result')
 
   // Accessibility improvement
   playAgain.focus()

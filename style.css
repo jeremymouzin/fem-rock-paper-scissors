@@ -342,9 +342,11 @@ dialog.rules button[type='submit'] {
 }
 
 .result {
-  display: block;
+  display: flex;
   grid-area: result;
-  margin-block: 6rem;
+  min-block-size: 247px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #result-label {
@@ -422,6 +424,7 @@ dialog.rules button[type='submit'] {
     block-size: auto;
     aspect-ratio: 1;
     background-size: 100%;
+    margin-block-end: 18.3rem;
   }
     
   button.scissors {
@@ -461,7 +464,6 @@ dialog.rules button[type='submit'] {
     display: block;
     margin-inline: auto;
     position: static;
-    margin-block-start: 18.2rem;
   }
 
   .fight {
