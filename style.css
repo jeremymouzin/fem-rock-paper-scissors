@@ -77,13 +77,12 @@ body {
     var(--color-radial-gradient-start),
     var(--color-radial-gradient-end)
   );
-  block-size: 100dvh;
+  min-block-size: 100dvh;
 }
 
 main {
   overflow-x: clip;
-  padding-inline: 3rem;
-  padding-block-end: 6rem;
+  padding: 46px 3rem 6rem;
 }
 
 button {
@@ -101,7 +100,6 @@ header {
   border: 3px solid var(--color-header-outline);
   max-inline-size: 704px;
   margin-inline: auto;
-  margin-block-start: 46px;
   padding: 1.7rem 2.3rem 1.6rem 2.9rem;
   border-radius: 16px;
 }
@@ -391,8 +389,11 @@ dialog.rules button[type='submit'] {
 /* Responsive */
 
 @media screen and (max-width: 950px) {
+  main {
+    padding: 3rem 3rem 6rem;
+  }
+  
   header {
-    margin-block-start: 3rem;
     border-radius: 6px;
     padding: 1rem 1.1rem;
   }
