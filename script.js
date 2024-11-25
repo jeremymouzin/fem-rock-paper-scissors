@@ -22,11 +22,11 @@ function show(className) {
 }
 function makeInvisible(className) {
   const element = document.querySelector(`.${className}`)
-  if (element) element.style.opacity = 0
+  if (element) element.style.visibility = 'hidden'
 }
 function makeVisible(className) {
   const element = document.querySelector(`.${className}`)
-  if (element) element.style.opacity = 1
+  if (element) element.style.removeProperty('visibility')
 }
 
 /* Elements that are hidden at start */
