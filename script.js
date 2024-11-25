@@ -12,11 +12,11 @@ originalDisplayValues.set('buttons-group', getComputedStyle(buttonsGroup).displa
 originalDisplayValues.set('result', getComputedStyle(result).display)
 
 /* Make appear/disappear helper functions */
-function makeDisappear(className) {
+function hide(className) {
   const element = document.querySelector(`.${className}`)
   if (element) element.style.display = 'none'
 }
-function makeAppear(className) {
+function show(className) {
   const element = document.querySelector(`.${className}`)
   if (element) element.style.display = originalDisplayValues.get(className) || 'block'
 }
@@ -30,8 +30,8 @@ function makeVisible(className) {
 }
 
 /* Elements that are hidden at start */
-makeDisappear('fight')
-makeDisappear('result')
+hide('fight')
+hide('result')
 
 /* Pick a choice */
 const TIME_TO_WAIT_BEFORE_HOUSE_PICK_CHOICE = 700
@@ -70,9 +70,9 @@ playAgain.addEventListener('click', () => {
 
   // Hide results and get back to choice
   fight.classList.remove('results')
-  makeDisappear('result')
-  makeDisappear('fight')
-  makeAppear('buttons-group')
+  hide('result')
+  hide('fight')
+  show('buttons-group')
 
   // Accessiblity improvement
   firstChoiceButton.focus()
@@ -80,11 +80,11 @@ playAgain.addEventListener('click', () => {
 
 document.querySelectorAll('.buttons-group button').forEach((button) => {
   button.addEventListener('click', (e) => {
-    makeDisappear('buttons-group')
+    hide('buttons-group')
     fight.classList.add('results')
-    makeAppear('fight')
+    show('fight')
     makeInvisible('result')
-    makeAppear('result')
+    show('result')
     userChoiceValue = e.currentTarget.dataset.choice
     userChoice.classList.add(userChoiceValue)
 
