@@ -160,8 +160,8 @@ header > img {
   transition: transform ease-in 50ms, outline ease-in 0.2s;
 }
 
-.choice:hover,
-.choice:focus-visible {
+button.choice:hover,
+button.choice:focus-visible {
   transform: scale(1.1);
   outline-width: 6px;
   outline-offset: 6px;
