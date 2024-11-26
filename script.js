@@ -11,6 +11,21 @@ originalDisplayValues.set('fight', getComputedStyle(fight).display)
 originalDisplayValues.set('buttons-group', getComputedStyle(buttonsGroup).display)
 originalDisplayValues.set('result', getComputedStyle(result).display)
 
+/*
+  I can't retrieve original buttons positions and transformations when clicking
+  on them because I apply a transformation on them when hovering which shift their
+  position slightly. To get the correct position I retrieve it immediately after
+  the page is loaded.
+*/
+const userChoice = document.querySelector('.user-choice')
+const userChoiceOriginalTransformValue = getComputedStyle(userChoice).transform
+
+const buttonsInitialPositions = new Map()
+const buttonsChoice = buttonsGroup.querySelectorAll('button')
+buttonsChoice.forEach((button) => {
+  buttonsInitialPositions.set(button, button.getBoundingClientRect())
+})
+
 /* Make appear/disappear helper functions */
 function hide(className) {
   const element = document.querySelector(`.${className}`)
@@ -30,13 +45,26 @@ function makeVisible(className) {
 }
 
 /* Elements that are hidden at start */
-hide('fight')
+hide('buttons-group')
 hide('result')
+// I need to make the .fight div part of the DOM but invisible to compute position
+// of userChoice button while not showing it on screen so there is no glitch when
+// loading the website
+makeInvisible('fight')
+show('fight')
+
+userChoice.style.transform = 'none'
+userChoice.style.transition = 'none'
+buttonsInitialPositions.set(userChoice, userChoice.getBoundingClientRect())
+userChoice.style.transform = ''
+userChoice.style.transition = ''
+hide('fight')
+makeVisible('fight')
+show('buttons-group')
 
 /* Pick a choice */
 const TIME_TO_WAIT_BEFORE_HOUSE_PICK_CHOICE = 700
 const TIME_BETWEEN_EACH_CHOICE_ITERATION = 100
-const userChoice = document.querySelector('.user-choice')
 const houseChoice = document.querySelector('.house-choice')
 const playAgain = document.querySelector('.play-again')
 const firstChoiceButton = document.querySelector('.choice.scissors')
@@ -81,21 +109,19 @@ playAgain.addEventListener('click', () => {
 
 document.querySelectorAll('.buttons-group button').forEach((button) => {
   button.addEventListener('click', (e) => {
-    hide('buttons-group')
-    fight.classList.add('results')
-    show('fight')
-    makeInvisible('result')
-    show('result')
     userChoiceValue = e.currentTarget.dataset.choice
     userChoice.classList.add(userChoiceValue)
 
-    // Let's make the house pick a random choice
-    const id = setInterval(pickHouseChoice, TIME_BETWEEN_EACH_CHOICE_ITERATION)
-    setTimeout(() => {
-      clearInterval(id)
-      houseChoiceValue = pickHouseChoice()
-      showResults(userChoiceValue, houseChoiceValue)
-    }, TIME_TO_WAIT_BEFORE_HOUSE_PICK_CHOICE)
+    // Flying button animation
+    flyingAnimation(e.currentTarget, () => {
+      // Let's make the house pick a random choice
+      const id = setInterval(pickHouseChoice, TIME_BETWEEN_EACH_CHOICE_ITERATION)
+      setTimeout(() => {
+        clearInterval(id)
+        houseChoiceValue = pickHouseChoice()
+        showResults(userChoiceValue, houseChoiceValue)
+      }, TIME_TO_WAIT_BEFORE_HOUSE_PICK_CHOICE)
+    })
   })
 })
 
@@ -141,7 +167,8 @@ function showResults(userValue, houseValue) {
   localStorage.setItem(SCORE_KEY, score)
 
   // Show result UI
-  makeVisible('result')
+  show('result')
+  fight.classList.add('results')
 
   // Accessibility improvement
   playAgain.focus()
@@ -154,3 +181,70 @@ const rulesDialog = document.querySelector('dialog.rules')
 rulesButton.addEventListener('click', () => {
   rulesDialog.showModal()
 })
+
+/* WOW Effect animations */
+
+function flyingAnimation(buttonClicked, callBack) {
+  const { x: sourceX, y: sourceY } = buttonsInitialPositions.get(buttonClicked)
+
+  // Let's clone the button to let the buttons-group intact and disappear nicely
+  const buttonCloned = buttonClicked.cloneNode()
+  buttonCloned.style.position = 'fixed'
+  buttonCloned.style.insetInlineStart = `${sourceX}px`
+  buttonCloned.style.insetBlockStart = `${sourceY}px`
+  buttonCloned.classList.add('flying-button')
+
+  document.querySelector('main').appendChild(buttonCloned)
+
+  // Make the clicked button disappear
+  buttonClicked.style.display = 'none'
+
+  buttonsGroup.addEventListener(
+    'animationend',
+    (e) => {
+      if (e.animationName === 'fadeOut') {
+        // Hides the buttons-group now it's fade out
+        hide('buttons-group')
+        buttonsGroup.classList.remove('fadeOut')
+        // Make the clicked button get back in place
+        buttonClicked.style.removeProperty('display')
+        // Let's fade in the next screen
+        show('fight')
+        fight.classList.add('fadeIn')
+      }
+    },
+    {
+      once: true,
+    }
+  )
+
+  buttonsGroup.addEventListener(
+    'animationstart',
+    (e) => {
+      if (e.animationName === 'fadeOut') {
+        const { x: destinationX, y: destinationY } = buttonsInitialPositions.get(userChoice)
+
+        buttonCloned.style.transform = userChoiceOriginalTransformValue
+        buttonCloned.style.insetInlineStart = `${destinationX}px`
+        buttonCloned.style.insetBlockStart = `${destinationY}px`
+
+        fight.classList.add('fadeIn')
+      }
+    },
+    { once: true }
+  )
+
+  buttonsGroup.classList.add('fadeOut')
+
+  fight.addEventListener(
+    'animationend',
+    (e) => {
+      if (e.animationName === 'fadeIn') {
+        fight.classList.remove('fadeIn')
+        buttonCloned.remove()
+        callBack()
+      }
+    },
+    { once: true }
+  )
+}
