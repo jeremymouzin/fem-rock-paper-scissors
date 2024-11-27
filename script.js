@@ -67,6 +67,7 @@ playAgain.addEventListener('click', () => {
   // Reset results
   userChoice.classList.remove('winner')
   houseChoice.classList.remove('winner')
+  houseChoice.classList.remove('choice')
 
   // Hide results and get back to choice
   fight.classList.remove('results')
