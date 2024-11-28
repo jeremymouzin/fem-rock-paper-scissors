@@ -200,7 +200,6 @@ button.choice:focus-visible {
 
 button.scissors {
   inset-inline-start: 34%;
-  transform: scale(var(--scale-buttons));
 }
 
 .spock {
