@@ -156,6 +156,8 @@ The last part should be fun and should provoke a WOW effect on the user of the g
 - Some nice box-shadow on the rules button when hover or focus-visible (I removed the default ouline of the browser)
 - A rounded red (same red as rock choice) outline for the close button in the rules dialog when using keyboard to select it
 - A bounce effect on the play again button and an hover/focus-visible effect (bouncing faster)
+- A flying button animation when picking a choice + fade in / out from the hexagon choice to the fight layout
+- An animation when the house picks up a choice: house choices are made fast on the screen until it picks the last one
 
 ## Author
 
