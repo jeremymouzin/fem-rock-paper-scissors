@@ -11,20 +11,8 @@ originalDisplayValues.set('fight', getComputedStyle(fight).display)
 originalDisplayValues.set('buttons-group', getComputedStyle(buttonsGroup).display)
 originalDisplayValues.set('result', getComputedStyle(result).display)
 
-/*
-  I can't retrieve original buttons positions and transformations when clicking
-  on them because I apply a transformation on them when hovering which shift their
-  position slightly. To get the correct position I retrieve it immediately after
-  the page is loaded.
-*/
 const userChoice = document.querySelector('.user-choice')
 const userChoiceOriginalTransformValue = getComputedStyle(userChoice).transform
-
-const buttonsInitialPositions = new Map()
-const buttonsChoice = buttonsGroup.querySelectorAll('button')
-buttonsChoice.forEach((button) => {
-  buttonsInitialPositions.set(button, button.getBoundingClientRect())
-})
 
 /* Make appear/disappear helper functions */
 function hide(className) {
@@ -45,21 +33,8 @@ function makeVisible(className) {
 }
 
 /* Elements that are hidden at start */
-hide('buttons-group')
-hide('result')
-// I need to make the .fight div part of the DOM but invisible to compute position
-// of userChoice button while not showing it on screen so there is no glitch when
-// loading the website
-makeInvisible('fight')
-show('fight')
-
-userChoice.style.transform = 'none'
-userChoice.style.transition = 'none'
-buttonsInitialPositions.set(userChoice, userChoice.getBoundingClientRect())
-userChoice.style.transform = ''
-userChoice.style.transition = ''
 hide('fight')
-makeVisible('fight')
+hide('result')
 show('buttons-group')
 
 /* Pick a choice */
@@ -185,66 +160,109 @@ rulesButton.addEventListener('click', () => {
 /* WOW Effect animations */
 
 function flyingAnimation(buttonClicked, callBack) {
-  const { x: sourceX, y: sourceY } = buttonsInitialPositions.get(buttonClicked)
+  const { x: sourceX, y: sourceY } = buttonClicked.getBoundingClientRect()
+  let iterations = 0
 
-  // Let's clone the button to let the buttons-group intact and disappear nicely
-  const buttonCloned = buttonClicked.cloneNode()
-  buttonCloned.style.position = 'fixed'
-  buttonCloned.style.insetInlineStart = `${sourceX}px`
-  buttonCloned.style.insetBlockStart = `${sourceY}px`
-  buttonCloned.classList.add('flying-button')
+  function tryToStartFlyingAnimation(element) {
+    // To get correct position, we must get rid of any transformation on the element
+    userChoice.style.transform = 'none'
+    userChoice.style.transition = 'none'
+    const { x: destinationX, y: destinationY, width, height } = element.getBoundingClientRect()
+    userChoice.style.removeProperty('transform')
+    userChoice.style.removeProperty('transition')
 
-  document.querySelector('main').appendChild(buttonCloned)
-
-  // Make the clicked button disappear
-  buttonClicked.style.display = 'none'
-
-  buttonsGroup.addEventListener(
-    'animationend',
-    (e) => {
-      if (e.animationName === 'fadeOut') {
-        // Hides the buttons-group now it's fade out
-        hide('buttons-group')
-        buttonsGroup.classList.remove('fadeOut')
-        // Make the clicked button get back in place
-        buttonClicked.style.removeProperty('display')
-        // Let's fade in the next screen
-        show('fight')
-        fight.classList.add('fadeIn')
-      }
-    },
-    {
-      once: true,
+    // If the UI didn't update, try again with 10ms delay (delay growing at each iteration)
+    // to allow the browser to update the UI. Max retries are 11 (iterations goes from 0 to 10)
+    if ((width === 0 || height === 0) && iterations <= 10) {
+      setTimeout(() => tryToStartFlyingAnimation(element), 1 * iterations++)
+      return
     }
-  )
 
-  buttonsGroup.addEventListener(
-    'animationstart',
-    (e) => {
-      if (e.animationName === 'fadeOut') {
-        const { x: destinationX, y: destinationY } = buttonsInitialPositions.get(userChoice)
+    // Let's get the UI back for running animations
+    hide('fight')
+    makeVisible('fight')
+    show('buttons-group')
 
-        buttonCloned.style.transform = userChoiceOriginalTransformValue
-        buttonCloned.style.insetInlineStart = `${destinationX}px`
-        buttonCloned.style.insetBlockStart = `${destinationY}px`
+    console.log(iterations)
+    let animationEnabled = iterations <= 10
 
-        fight.classList.add('fadeIn')
+    let buttonCloned
+    if (animationEnabled) {
+      // Let's clone the button to let the buttons-group intact and disappear nicely
+      buttonCloned = buttonClicked.cloneNode()
+      buttonCloned.style.position = 'fixed'
+      buttonCloned.style.insetInlineStart = `${sourceX}px`
+      buttonCloned.style.insetBlockStart = `${sourceY}px`
+      buttonCloned.classList.add('flying-button')
+
+      document.querySelector('main').appendChild(buttonCloned)
+
+      // Make the clicked button disappear
+      buttonClicked.style.display = 'none'
+    }
+
+    buttonsGroup.addEventListener(
+      'animationend',
+      (e) => {
+        if (e.animationName === 'fadeOut') {
+          // Hides the buttons-group now it's fade out
+          hide('buttons-group')
+          buttonsGroup.classList.remove('fadeOut')
+          // Make the clicked button get back in place
+          if (animationEnabled) buttonClicked.style.removeProperty('display')
+          // Let's fade in the next screen
+          show('fight')
+          fight.classList.add('fadeIn')
+        }
+      },
+      {
+        once: true,
       }
-    },
-    { once: true }
-  )
+    )
 
-  buttonsGroup.classList.add('fadeOut')
+    buttonsGroup.addEventListener(
+      'animationstart',
+      (e) => {
+        if (e.animationName === 'fadeOut') {
+          // If we failed to compute the destination position therefore we don't
+          // animate it at all to avoid glitches
+          if (animationEnabled) {
+            buttonCloned.style.transform = userChoiceOriginalTransformValue
+            buttonCloned.style.insetInlineStart = `${destinationX}px`
+            buttonCloned.style.insetBlockStart = `${destinationY}px`
+          }
 
-  fight.addEventListener(
-    'animationend',
-    (e) => {
-      if (e.animationName === 'fadeIn') {
-        fight.classList.remove('fadeIn')
-        buttonCloned.remove()
-        callBack()
-      }
-    },
-    { once: true }
-  )
+          fight.addEventListener(
+            'animationend',
+            (e) => {
+              if (e.animationName === 'fadeIn') {
+                fight.classList.remove('fadeIn')
+                if (animationEnabled) buttonCloned.remove()
+                callBack()
+              }
+            },
+            { once: true }
+          )
+
+          fight.classList.add('fadeIn')
+        }
+      },
+      { once: true }
+    )
+
+    // This will kick start the animation process
+    buttonsGroup.classList.add('fadeOut')
+  }
+
+  /*
+  I need to compute the final destination position of the button.
+  To compute actual correct position of the user-choice button I need to make it
+  appear on screen briefly (even with visibility: hidden) but I need to get display
+  property value other than none otherwise getBoundingClientRect() won't return correct values
+  */
+  hide('buttons-group')
+  makeInvisible('fight')
+  show('fight')
+
+  setTimeout(() => tryToStartFlyingAnimation(userChoice), 0)
 }
