@@ -158,7 +158,11 @@ rulesButton.addEventListener('click', () => {
 /* WOW Effect animations */
 
 function flyingAnimation(buttonClicked, callBack) {
+  buttonClicked.style.transform = 'none'
+  buttonClicked.style.transition = 'none'
   const { x: sourceX, y: sourceY } = buttonClicked.getBoundingClientRect()
+  buttonClicked.style.removeProperty('transform')
+  buttonClicked.style.removeProperty('transition')
 
   // To get correct position, we must get rid of any transformation on the element
   userChoice.style.transform = 'none'
