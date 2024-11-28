@@ -291,12 +291,6 @@ dialog.rules h2 {
   color: var(--color-dark-text);
 }
 
-dialog.rules img {
-  --pixel-perfect-size: 101%;
-  inline-size: var(--pixel-perfect-size);
-  max-inline-size: 50dvh;
-}
-
 dialog.rules button[type='submit'] {
   background-image: url(images/icon-close.svg);
   background-repeat: no-repeat;
@@ -569,29 +563,20 @@ dialog.rules button[type='submit']:focus-visible {
   }
 
   dialog.rules .container {
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    block-size: 100vh;
+    block-size: 100dvh;
     gap: unset;
-  }
-
-  dialog.rules .container > h2,
-  dialog.rules .container > form {
-    flex-grow: 1;
-    flex-basis: 50%;
   }
 
   dialog.rules h2 {
     text-align: center;
-    position: relative;
-    inset-block-start: 9rem;
+    position: static;
+    margin-block-start: 4dvh;
   }
 
   dialog.rules button[type='submit'] {
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
-    inset-block-start: unset;
-    inset-block-end: 6rem;
+    position: static;
   }
 
   .fight.results {
