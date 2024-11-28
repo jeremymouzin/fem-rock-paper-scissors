@@ -522,7 +522,9 @@ dialog.rules button[type='submit']:focus-visible {
   #rules-button {
     display: block;
     margin-inline: auto;
-    position: static;
+    position: relative;
+    inset: unset;
+    margin-block-start: 247px;
   }
 
   .fight {
