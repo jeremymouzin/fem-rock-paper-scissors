@@ -143,7 +143,7 @@ function showResults(userValue, houseValue) {
   fight.classList.add('results')
 
   function showResultLabel(label) {
-    const words = label.split(' ')
+    const words = label.match(/\w+| +/g)
     if (words.length === 1) {
       // When result is draw
       resultLabel.textContent = label
@@ -158,12 +158,26 @@ function showResults(userValue, houseValue) {
     } else {
       // When we have at least 2 words (you win/you lose)
       const htmlContent = words.map((word, index) => {
+        if (word.match(/ +/g)) return word
         const span = document.createElement('span')
         span.textContent = word
-        span.classList.add(index % 2 === 0 ? 'left' : 'right')
-        return span.outerHTML
+        span.classList.add(index === 0 ? 'left' : 'right')
+
+        // Special animation if we lost
+        if (winnerElement === houseChoice && index === 2) {
+          span.addEventListener(
+            'animationend',
+            (e) => {
+              span.classList.add('fail')
+            },
+            { once: true }
+          )
+        }
+
+        return span
       })
-      resultLabel.innerHTML = htmlContent.join(' ')
+      resultLabel.innerHTML = ''
+      resultLabel.append(...htmlContent)
     }
     show('result')
   }
