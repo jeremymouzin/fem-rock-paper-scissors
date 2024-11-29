@@ -245,6 +245,19 @@ button.rock {
   inset-block-end: 0;
 }
 
+button.flying-button {
+  transition-property: inset-inline-start, inset-block-start, inset-inline-end, inset-block-end,
+    transform;
+  transition-duration: var(--animation-duration-fade-in-out);
+  transition-timing-function: var(--transition-timing-function);
+  outline: none;
+}
+
+button.flying-button:hover,
+button.flying-button:focus-visible {
+  outline: none;
+}
+
 #rules-button {
   position: absolute;
   inset-inline-end: 3.1rem;
@@ -384,77 +397,6 @@ dialog.rules button[type='submit']:focus-visible {
   margin-block-end: 1.2rem;
 }
 
-.top,
-.left,
-.right,
-.fail {
-  position: relative;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-
-.top {
-  animation-name: top;
-}
-
-@keyframes top {
-  from {
-    opacity: 0;
-    inset-block-start: -15rem;
-  }
-  to {
-    opacity: 1;
-    inset-block-start: 0;
-  }
-}
-
-.left {
-  animation-name: left;
-}
-
-@keyframes left {
-  from {
-    opacity: 0;
-    inset-inline-start: -60vw;
-  }
-  to {
-    opacity: 1;
-    inset-inline-start: 0;
-  }
-}
-
-.right {
-  animation-name: right;
-}
-
-@keyframes right {
-  from {
-    opacity: 0;
-    inset-inline-start: 60vw;
-  }
-  to {
-    opacity: 1;
-    inset-inline-start: 0;
-  }
-}
-
-.fail {
-  transform-origin: bottom left;
-  display: inline-block;
-  animation: fail ease-out 0.3s forwards;
-  animation-delay: 0.2s;
-}
-
-@keyframes fail {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(10deg);
-  }
-}
-
 .play-again {
   display: block;
   text-transform: uppercase;
@@ -474,15 +416,6 @@ dialog.rules button[type='submit']:focus-visible {
   outline: none;
   animation-duration: 0.1s;
   --scale-bounce: 1.1;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(var(--scale-bounce));
-  }
 }
 
 .winner::after {
@@ -670,6 +603,8 @@ dialog.rules button[type='submit']:focus-visible {
   }
 }
 
+/* Animations */
+
 .fadeIn {
   animation: fadeIn ease-in var(--animation-duration-fade-in-out) forwards;
 }
@@ -696,15 +631,82 @@ dialog.rules button[type='submit']:focus-visible {
   }
 }
 
-button.flying-button {
-  transition-property: inset-inline-start, inset-block-start, inset-inline-end, inset-block-end,
-    transform;
-  transition-duration: var(--animation-duration-fade-in-out);
-  transition-timing-function: var(--transition-timing-function);
-  outline: none;
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(var(--scale-bounce));
+  }
 }
 
-button.flying-button:hover,
-button.flying-button:focus-visible {
-  outline: none;
+.top,
+.left,
+.right,
+.fail {
+  position: relative;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.top {
+  animation-name: top;
+}
+
+@keyframes top {
+  from {
+    opacity: 0;
+    inset-block-start: -15rem;
+  }
+  to {
+    opacity: 1;
+    inset-block-start: 0;
+  }
+}
+
+.left {
+  animation-name: left;
+}
+
+@keyframes left {
+  from {
+    opacity: 0;
+    inset-inline-start: -60vw;
+  }
+  to {
+    opacity: 1;
+    inset-inline-start: 0;
+  }
+}
+
+.right {
+  animation-name: right;
+}
+
+@keyframes right {
+  from {
+    opacity: 0;
+    inset-inline-start: 60vw;
+  }
+  to {
+    opacity: 1;
+    inset-inline-start: 0;
+  }
+}
+
+.fail {
+  transform-origin: bottom left;
+  display: inline-block;
+  animation: fail ease-out 0.3s forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fail {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(10deg);
+  }
 }
