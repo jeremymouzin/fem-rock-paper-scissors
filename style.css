@@ -585,7 +585,7 @@ dialog.rules button[type='submit']:focus-visible {
   }
 
   .fight.results {
-    max-inline-size: 100%;
+    max-inline-size: 760px;
     margin-block-start: 80px;
     grid-template: 170px 2.6rem 1fr / 1fr 1fr;
     justify-items: center;
