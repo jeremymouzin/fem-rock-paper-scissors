@@ -123,15 +123,16 @@ function choice(userValue) {
 function showResults(userValue, houseValue) {
   let resultLabelValue = ''
   // Compute who wins
+  let winnerElement
   if (userValue === houseValue) {
     resultLabelValue = 'draw'
   } else if (choice(userValue).beats(houseValue)) {
     resultLabelValue = 'you win'
-    userChoice.classList.add('winner')
+    winnerElement = userChoice
     score++
   } else {
     resultLabelValue = 'you lose'
-    houseChoice.classList.add('winner')
+    winnerElement = houseChoice
     score--
   }
 
@@ -140,8 +141,27 @@ function showResults(userValue, houseValue) {
   localStorage.setItem(SCORE_KEY, score)
 
   // Show result UI
-  show('result')
   fight.classList.add('results')
+
+  // Check if we're on the mobile version or not
+  const mobileMediaQuery = window.matchMedia('(max-width: 950px)')
+  if (mobileMediaQuery.matches) {
+    show('result')
+    winnerElement?.classList.add('winner')
+  } else {
+    fight.addEventListener(
+      'transitionend',
+      (e) => {
+        if (e.propertyName === 'grid-template-columns') {
+          show('result')
+          winnerElement?.classList.add('winner')
+        }
+      },
+      {
+        once: true,
+      }
+    )
+  }
 
   // Accessibility improvement
   playAgain.focus()

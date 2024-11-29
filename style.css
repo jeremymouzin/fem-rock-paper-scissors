@@ -73,6 +73,7 @@ h6 {
   --color-radial-gradient-end: hsl(237, 49%, 15%);
 
   --animation-duration-fade-in-out: 600ms;
+  --transition-timing-function: cubic-bezier(0.49, -0.62, 0.35, 0.35);
 }
 
 body {
@@ -314,12 +315,12 @@ dialog.rules button[type='submit']:focus-visible {
   margin-inline: auto;
   margin-block-start: 70px;
   display: grid;
-  grid-template: 1fr 420px / 1fr 1fr;
+  grid-template: 1fr 420px / 1fr 0fr 1fr;
   justify-items: center;
   align-items: center;
   grid-template-areas:
-    'you-picked house-picked'
-    'user-choice house-choice';
+    'you-picked . house-picked'
+    'user-choice . house-choice';
 }
 
 .fight .user-choice {
@@ -372,6 +373,8 @@ dialog.rules button[type='submit']:focus-visible {
   grid-template-areas:
     'you-picked . house-picked'
     'user-choice result house-choice';
+  transition-duration: 0.3s;
+  transition-timing-function: var(--transition-timing-function);
 }
 
 .result {
@@ -643,7 +646,7 @@ button.flying-button {
   transition-property: inset-inline-start, inset-block-start, inset-inline-end, inset-block-end,
     transform;
   transition-duration: var(--animation-duration-fade-in-out);
-  transition-timing-function: cubic-bezier(0.49, -0.62, 0.35, 0.35);
+  transition-timing-function: var(--transition-timing-function);
   outline: none;
 }
 
