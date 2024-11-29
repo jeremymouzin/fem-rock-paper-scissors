@@ -41,7 +41,7 @@ Users are able to:
 
 ## Video demo
 
-TODO: Put the video here
+<video src="https://github.com/user-attachments/assets/0b59dbfa-4e04-4c20-9cb5-cb731ea36bc0"><video>
 
 ## Links
 
