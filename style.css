@@ -90,7 +90,7 @@ body {
 
 main {
   overflow-x: clip;
-  padding: 46px 3rem 6rem;
+  padding: 4.6rem 3rem 6rem;
 }
 
 button {
@@ -145,7 +145,7 @@ header > img {
   background-image: url(images/bg-pentagon.svg);
   background-repeat: no-repeat;
   background-position: center;
-  margin-block-start: 46px;
+  margin-block-start: 4.6rem;
   position: absolute;
   inset-inline: 0;
   z-index: 1;
@@ -313,7 +313,7 @@ dialog.rules button[type='submit']:focus-visible {
 .fight {
   max-inline-size: 760px;
   margin-inline: auto;
-  margin-block-start: 70px;
+  margin-block-start: 7rem;
   display: grid;
   grid-template: 1fr 420px / 1fr 0fr 1fr;
   justify-items: center;
@@ -365,7 +365,7 @@ dialog.rules button[type='submit']:focus-visible {
 .fight.results {
   max-inline-size: 920px;
   margin-inline: auto;
-  margin-block-start: 70px;
+  margin-block-start: 7rem;
   display: grid;
   grid-template: 1fr 420px / 1fr 1fr 1fr;
   justify-items: center;
@@ -451,7 +451,7 @@ dialog.rules button[type='submit']:focus-visible {
   transform-origin: bottom left;
   display: inline-block;
   animation: fail ease-out 0.3s forwards;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
 }
 
 @keyframes fail {
@@ -546,7 +546,7 @@ dialog.rules button[type='submit']:focus-visible {
   }
 
   .buttons-group {
-    margin-block-start: 140px;
+    margin-block-start: 14rem;
     max-inline-size: 200px;
     block-size: auto;
     aspect-ratio: 1;
@@ -597,7 +597,7 @@ dialog.rules button[type='submit']:focus-visible {
     margin-inline: auto;
     position: relative;
     inset: unset;
-    margin-block-start: 247px;
+    margin-block-start: 24.7rem;
   }
 
   .fight.results + #rules-button {
@@ -605,7 +605,7 @@ dialog.rules button[type='submit']:focus-visible {
   }
 
   .fight {
-    margin-block-start: 80px;
+    margin-block-start: 8rem;
     grid-template: 170px 2.6rem / 1fr 1fr;
     grid-template-areas:
       'user-choice house-choice'
@@ -660,7 +660,7 @@ dialog.rules button[type='submit']:focus-visible {
 
   .fight.results {
     max-inline-size: 760px;
-    margin-block-start: 80px;
+    margin-block-start: 8rem;
     grid-template: 170px 2.6rem 1fr / 1fr 1fr;
     justify-items: center;
     align-items: center;
