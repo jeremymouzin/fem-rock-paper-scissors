@@ -392,6 +392,60 @@ dialog.rules button[type='submit']:focus-visible {
   margin-block-end: 1.2rem;
 }
 
+.top,
+.left,
+.right {
+  position: relative;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.top {
+  animation-name: top;
+}
+
+@keyframes top {
+  from {
+    opacity: 0;
+    inset-block-start: -15rem;
+  }
+  to {
+    opacity: 1;
+    inset-block-start: 0;
+  }
+}
+
+.left {
+  animation-name: left;
+}
+
+@keyframes left {
+  from {
+    opacity: 0;
+    inset-inline-start: -60vw;
+  }
+  to {
+    opacity: 1;
+    inset-inline-start: 0;
+  }
+}
+
+.right {
+  animation-name: right;
+}
+
+@keyframes right {
+  from {
+    opacity: 0;
+    inset-inline-start: 60vw;
+  }
+  to {
+    opacity: 1;
+    inset-inline-start: 0;
+  }
+}
+
 .play-again {
   display: block;
   text-transform: uppercase;

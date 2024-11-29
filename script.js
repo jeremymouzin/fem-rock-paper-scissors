@@ -136,24 +136,49 @@ function showResults(userValue, houseValue) {
     score--
   }
 
-  resultLabel.textContent = resultLabelValue
   scoreSpan.textContent = score
   localStorage.setItem(SCORE_KEY, score)
 
   // Show result UI
   fight.classList.add('results')
 
+  function showResultLabel(label) {
+    const words = label.split(' ')
+    if (words.length === 1) {
+      // When result is draw
+      resultLabel.textContent = label
+      resultLabel.classList.add('top')
+      resultLabel.addEventListener(
+        'animationend',
+        () => {
+          resultLabel.classList.remove('top')
+        },
+        { once: true }
+      )
+    } else {
+      // When we have at least 2 words (you win/you lose)
+      const htmlContent = words.map((word, index) => {
+        const span = document.createElement('span')
+        span.textContent = word
+        span.classList.add(index % 2 === 0 ? 'left' : 'right')
+        return span.outerHTML
+      })
+      resultLabel.innerHTML = htmlContent.join(' ')
+    }
+    show('result')
+  }
+
   // Check if we're on the mobile version or not
   const mobileMediaQuery = window.matchMedia('(max-width: 950px)')
   if (mobileMediaQuery.matches) {
-    show('result')
+    showResultLabel(resultLabelValue)
     winnerElement?.classList.add('winner')
   } else {
     fight.addEventListener(
       'transitionend',
       (e) => {
         if (e.propertyName === 'grid-template-columns') {
-          show('result')
+          showResultLabel(resultLabelValue)
           winnerElement?.classList.add('winner')
         }
       },

@@ -158,6 +158,8 @@ The last part should be fun and should provoke a WOW effect on the user of the g
 - A bounce effect on the play again button and an hover/focus-visible effect (bouncing faster)
 - A flying button animation when picking a choice + fade in / out from the hexagon choice to the fight layout
 - An animation when the house picks up a choice: house choices are made fast on the screen until it picks the last one
+- An animation when the result is shown on desktop layout: user and house choices moves fast to the left and right to allow the result to appear in the middle
+- 2 specific animations for draw and you win/you lose results. When the result is draw it appears from the top and slides with opacity rising to its position. When the result is you win/you lost, each word comes from left and right from the screen
 
 ## Author
 
