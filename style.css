@@ -184,13 +184,12 @@ button.choice:focus-visible {
   inset-inline-start: var(--thickness);
   inset-block-start: var(--thickness);
   block-size: calc(var(--circle-size) - 2 * var(--thickness));
-  inline-size: calc(var(--circle-size) - 2 * var(--thickness));
+  aspect-ratio: 1;
   border-radius: 50%;
   box-shadow: inset 0 6px rgba(0, 0, 0, 0.15);
   background: var(--background-image), linear-gradient(#dadada, #fcf4e9);
-  background-position: var(--background-image-position), center;
+  background-position: center;
   background-repeat: no-repeat;
-  --background-image-position: center;
 }
 
 .scissors {
@@ -300,7 +299,7 @@ dialog.rules button[type='submit'] {
   inset-inline-end: 2.6rem;
   inset-block-start: 3.3rem;
   block-size: 3rem;
-  inline-size: 3rem;
+  aspect-ratio: 1;
 }
 
 dialog.rules button[type='submit']:focus-visible {
@@ -316,33 +315,31 @@ dialog.rules button[type='submit']:focus-visible {
   margin-block-start: 7rem;
   display: grid;
   grid-template: 1fr 420px / 1fr 0fr 1fr;
-  justify-items: center;
-  align-items: center;
+  place-items: center;
   grid-template-areas:
     'you-picked . house-picked'
     'user-choice . house-choice';
 }
 
 .fight .user-choice {
-  position: relative;
-  transform: scale(2);
   grid-area: user-choice;
 }
 
 .fight .house-choice {
   --size: 225px;
   block-size: var(--size);
-  inline-size: var(--size);
+  aspect-ratio: 1;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   grid-area: house-choice;
 }
 
+.fight .user-choice,
 .fight .house-choice.choice {
+  --scale-buttons: 2;
   position: relative;
   block-size: calc(var(--circle-size) + 3px);
-  inline-size: var(--circle-size);
-  transform: scale(2);
+  transform: scale(var(--scale-buttons));
 }
 
 .fight p {
@@ -364,12 +361,7 @@ dialog.rules button[type='submit']:focus-visible {
 
 .fight.results {
   max-inline-size: 920px;
-  margin-inline: auto;
-  margin-block-start: 7rem;
-  display: grid;
   grid-template: 1fr 420px / 1fr 1fr 1fr;
-  justify-items: center;
-  align-items: center;
   grid-template-areas:
     'you-picked . house-picked'
     'user-choice result house-choice';
@@ -497,10 +489,11 @@ dialog.rules button[type='submit']:focus-visible {
   --winner-radius: 108px;
   --button-width: calc(var(--circle-size) / 2);
   --shadow-full-width: calc(100% + 2 * var(--winner-radius));
+  --shadow-inset: calc(50% - var(--shadow-full-width) / 2);
   content: '';
   position: absolute;
-  inset-inline-start: calc(50% - var(--shadow-full-width) / 2);
-  inset-block-start: calc(50% - var(--shadow-full-width) / 2);
+  inset-inline-start: var(--shadow-inset);
+  inset-block-start: var(--shadow-inset);
   block-size: var(--shadow-full-width);
   inline-size: var(--shadow-full-width);
   border-radius: 50%;
@@ -581,8 +574,6 @@ dialog.rules button[type='submit']:focus-visible {
 
   .choice {
     --circle-size: 135px;
-    block-size: calc(var(--circle-size) + 3px);
-    inline-size: var(--circle-size);
     --scale-buttons: 0.7;
     transform: scale(var(--scale-buttons));
   }
@@ -615,7 +606,6 @@ dialog.rules button[type='submit']:focus-visible {
   .fight .user-choice,
   .fight .house-choice.choice {
     --scale-buttons: 1;
-    transform: scale(var(--scale-buttons));
   }
 
   .fight .house-choice {
@@ -636,7 +626,6 @@ dialog.rules button[type='submit']:focus-visible {
     max-height: none;
     block-size: 100%;
     inline-size: 100%;
-    margin-block: 0;
     padding-inline: 3.2rem;
     padding-block: 0;
   }
@@ -662,8 +651,6 @@ dialog.rules button[type='submit']:focus-visible {
     max-inline-size: 760px;
     margin-block-start: 8rem;
     grid-template: 170px 2.6rem 1fr / 1fr 1fr;
-    justify-items: center;
-    align-items: center;
     grid-template-areas:
       'user-choice house-choice'
       'you-picked house-picked'
@@ -673,10 +660,6 @@ dialog.rules button[type='submit']:focus-visible {
   #result-label {
     margin-block-end: 0.4rem;
     text-align: center;
-  }
-
-  .play-again {
-    inline-size: 22rem;
   }
 }
 
